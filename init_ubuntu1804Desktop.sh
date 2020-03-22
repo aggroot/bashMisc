@@ -193,6 +193,6 @@ curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
 # source bash config
 source ~/.bashrc
 
-${PWD}/../snxInstall.sh agalbenus access.axway.net
+sudo bash -c "${PWD}/../snxInstall.sh agalbenus access.axway.net"
 
 popd
