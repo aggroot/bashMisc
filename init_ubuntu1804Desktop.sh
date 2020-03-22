@@ -188,3 +188,5 @@ curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
 
 # source bash config
 source ~/.bashrc
+
+sudo bash -c 'snx_install agalbenus access.axway.net'
