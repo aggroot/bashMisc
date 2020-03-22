@@ -168,7 +168,6 @@ export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 THIS_EOF
 }
 
-
 #sdkman
 curl -s "https://get.sdkman.io" | bash
 cat << THIS_EOF >> ~/.bashrc
@@ -194,6 +193,6 @@ curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
 # source bash config
 source ~/.bashrc
 
-sudo bash -c "${PWD}/snxInstall.sh agalbenus access.axway.net"
+${PWD}/../snxInstall.sh agalbenus access.axway.net
 
 popd
