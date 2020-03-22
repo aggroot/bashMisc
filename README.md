@@ -1,0 +1,2 @@
+# bashMisc
+bash miscellaneous
