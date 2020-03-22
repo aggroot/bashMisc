@@ -1,16 +1,3 @@
-Skip to content
- 
-Search…
-All gists
-Back to GitHub
-@agalbenus 
-@agalbenus agalbenus/ubuntu1804_prepare.sh
-Last active 5 minutes ago
-0
- Code Revisions 4
-<script src="https://gist.github.com/agalbenus/47a5b8d42c5af470641f2a7bd4c007cf.js"></script>
-  
- ubuntu1804_prepare.sh
 #!/bin/bash
 
 sudo apt-add-repository ppa:fish-shell/release-3 -y
@@ -184,22 +171,3 @@ THIS_EOF
 # source bash config
 . $HOME/.bashrc
 popd
-
-
-@agalbenus
- 
-Leave a comment
-
-Attach files by dragging & dropping, selecting or pasting them.
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
