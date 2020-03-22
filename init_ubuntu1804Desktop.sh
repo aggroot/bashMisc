@@ -168,7 +168,6 @@ export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 THIS_EOF
 }
 
-popd
 
 #sdkman
 curl -s "https://get.sdkman.io" | bash
@@ -184,9 +183,17 @@ fish -c 'fisher add reitzig/sdkman-for-fish'
 fish -c 'fisher add agalbenus/theme-cbjohnson'
 chsh -s $(which fish)
 
+#docker
+if which docker; then
+    echo "!!!Refresh docker installation!!!"
+    sudo apt-get remove docker docker-engine docker.io containerd runc docker-ce docker-ce-cli containerd.io
+fi
+
 curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
 
 # source bash config
 source ~/.bashrc
 
-sudo bash -c 'snx_install agalbenus access.axway.net'
+sudo bash -c "${PWD}/snxInstall.sh agalbenus access.axway.net"
+
+popd
