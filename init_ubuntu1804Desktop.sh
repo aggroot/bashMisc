@@ -1,4 +1,48 @@
 #!/bin/bash
+installDocker=false
+installSdkman=false
+installSNX=false
+installTilda=false
+installFish=false
+installTMUX=false
+
+read -p "Install/refresh docker? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installDocker=true
+fi
+
+read -p "Install sdkman? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installSdkman=true
+fi
+
+read -p "Install snx? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installSNX=true
+fi
+
+read -p "Install fish shell? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installFish=true
+fi
+
+read -p "Install tilda terminal? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installTilda=true
+fi
+
+read -p "Install tmux? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installTMUX=true
+fi
+
+
 
 sudo apt-add-repository ppa:fish-shell/release-3 -y
 sudo apt update -y && sudo apt upgrade -yq
