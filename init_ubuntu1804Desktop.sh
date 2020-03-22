@@ -275,7 +275,7 @@ if [ "$installTeams" = true ];then
 fi
 
 if [ "$installChromium" = true ];then
-  sudo apt-get install chromium-browser
+  sudo apt-get install -y chromium-browser
 fi
 
 if [ "$installI4j" = true ];then
