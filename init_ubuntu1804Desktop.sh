@@ -6,11 +6,32 @@ installTilda=false
 installFish=false
 installTMUX=false
 aptUpgrade=false
+installTeams=false
+installI4j=false
+installChromium=false
+
+read -p "Install teams? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installTeams=true
+fi
 
 read -p "Install/refresh docker? (Y/N) " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]];then
   installDocker=true
+fi
+
+read -p "Install install4j7? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installI4j=true
+fi
+
+read -p "Install chromium browser? (Y/N) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]];then
+  installChromium=true
 fi
 
 read -p "Install sdkman? (Y/N) " -n 1 -r
@@ -248,6 +269,19 @@ if [ "$installSNX" = true ];then
   sudo bash -c "${PWD}/../snxInstall.sh agalbenus access.axway.net"
 fi
 
+if [ "$installTeams" = true ];then
+  curl -fsSL 'https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb' -o teams.deb
+  sudo apt install teams.deb
+fi
+
+if [ "$installChromium" = true ];then
+  sudo apt-get install chromium-browser
+fi
+
+if [ "$installI4j" = true ];then
+  curl -fsSL 'https://download-gcdn.ej-technologies.com/install4j/install4j_linux_7_0_12.deb' -o i4j7.deb
+  sudo apt install i4j7.deb
+fi
 # source bash config
 source ~/.bashrc
 popd
