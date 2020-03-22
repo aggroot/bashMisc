@@ -55,7 +55,7 @@ fi
 
 mkdir -p initBuildDir && pushd initBuildDir
 rm -rf *
-sudo apt-get install  vim-gtk git zip unzip curl
+sudo apt-get install -y vim-gtk git zip unzip curl
 
 if [ "$installTilda" = true ];then
   
