@@ -5,7 +5,7 @@ sudo apt update -y && sudo apt upgrade -yq
 
 #tilda source compiling required dependencies and other utilities
 sudo apt-get install -y dh-autoreconf autotools-dev debhelper libconfuse-dev libgtk-3-dev libvte-2.91-dev  libpcre2-dev pkg-config \
-  vim-gtk git zip unzip fish curl
+  vim-gtk git zip unzip curl
   
 mkdir -p initBuildDir && pushd initBuildDir
 rm -rf *
@@ -169,5 +169,17 @@ THIS_EOF
 }
 
 # source bash config
-. $HOME/.bashrc
+source ~/.bashrc
 popd
+
+#sdkman
+curl -s "https://get.sdkman.io" | bash
+
+#fish configuration
+sudo apt-get install -y fish
+fish -c 'curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish'
+fish -c 'fisher add reitzig/sdkman-for-fish'
+fish -c 'fisher add agalbenus/theme-cbjohnson'
+chsh -s $(which fish)
+
+curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
