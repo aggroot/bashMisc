@@ -271,7 +271,7 @@ fi
 
 if [ "$installTeams" = true ];then
   curl -fsSL 'https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb' -o teams.deb
-  sudo apt install teams.deb
+  sudo dpkg -i teams.deb
 fi
 
 if [ "$installChromium" = true ];then
@@ -280,7 +280,7 @@ fi
 
 if [ "$installI4j" = true ];then
   curl -fsSL 'https://download-gcdn.ej-technologies.com/install4j/install4j_linux_7_0_12.deb' -o i4j7.deb
-  sudo apt install i4j7.deb
+  sudo dpkg -i i4j7.deb
 fi
 # source bash config
 source ~/.bashrc
