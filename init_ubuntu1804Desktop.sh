@@ -168,12 +168,14 @@ export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 THIS_EOF
 }
 
-# source bash config
-source ~/.bashrc
 popd
 
 #sdkman
 curl -s "https://get.sdkman.io" | bash
+cat << THIS_EOF >> ~/.bashrc
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+THIS_EOF
 
 #fish configuration
 sudo apt-get install -y fish
@@ -183,3 +185,6 @@ fish -c 'fisher add agalbenus/theme-cbjohnson'
 chsh -s $(which fish)
 
 curl -fsSL https://get.docker.com | sh - && sudo usermod -aG docker $USER
+
+# source bash config
+source ~/.bashrc
