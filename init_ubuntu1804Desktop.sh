@@ -231,7 +231,7 @@ if [ "$installTMUX" = true ];then
   make && make install
   popd
 
-  cat << THIS_EOF >> ~/.bashrc
+  cat << 'THIS_EOF'>> ~/.bashrc
 #MANPATH=$HOME/local/share/man man tmux
 export PATH=$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
@@ -242,7 +242,7 @@ fi
 if [ "$installSdkman" = true ];then 
 #sdkman
   curl -s "https://get.sdkman.io" | bash
-  cat << THIS_EOF >> ~/.bashrc
+  cat << 'THIS_EOF' >> ~/.bashrc
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 THIS_EOF
