@@ -252,8 +252,8 @@ if [ "$installFish" = true ];then
   #fish configuration
   sudo apt-get install -y fish
   fish -c 'curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish'
-  fish -c 'fisher add reitzig/sdkman-for-fish'
-  fish -c 'fisher add agalbenus/theme-cbjohnson'
+  fish -c 'fisher install reitzig/sdkman-for-fish'
+  fish -c 'fisher install agalbenus/theme-cbjohnson'
   chsh -s $(which fish)
 fi
 if [ "$installDocker" = true ];then 
