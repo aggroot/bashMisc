@@ -251,7 +251,7 @@ fi
 if [ "$installFish" = true ];then 
   #fish configuration
   sudo apt-get install -y fish
-  fish -c 'curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish'
+  fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
   fish -c 'fisher install reitzig/sdkman-for-fish'
   fish -c 'fisher install agalbenus/theme-cbjohnson'
   chsh -s $(which fish)
