@@ -45,7 +45,7 @@ fi
 
 mkdir -p initBuildDir && pushd initBuildDir
 rm -rf *
-sudo apt-get install -y vim-gtk git zip unzip curl
+sudo apt-get install -y vim-gtk git zip unzip curl make
 
 
 if [ "$installTMUX" = true ];then 
@@ -66,8 +66,9 @@ if [ "$installTMUX" = true ];then
   mkdir -p tmux
   curl -fsSL https://github.com/tmux/tmux/releases/download/3.0a/tmux-3.0a.tar.gz | tar zvxf - -C tmux --strip=1 --show-stored-names
   pushd tmux
-  PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig ./configure --prefix=$HOME/local
-  make && make install
+  ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include" CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" 
+  make
+  cp tmux $HOME/local/bin
   popd
 
   cat << 'THIS_EOF'>> ~/.bashrc
