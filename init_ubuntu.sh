@@ -45,37 +45,37 @@ fi
 
 mkdir -p initBuildDir && pushd initBuildDir
 rm -rf *
-sudo apt-get install -y vim-gtk git zip unzip curl make
+sudo apt-get install -y vim-gtk gcc git zip unzip curl make
 
 
 if [ "$installTMUX" = true ];then 
   mkdir -p libevent
   curl -fsSL https://github.com/libevent/libevent/releases/download/release-2.1.11-stable/libevent-2.1.11-stable.tar.gz | tar -xzvf - -C libevent --strip=1 --show-stored-names
   pushd libevent
-  ./configure --prefix=$HOME/local --enable-shared
+  ./configure --prefix="$HOME/.local" --enable-shared
   make && make install
   popd
 
   mkdir -p ncurses
   curl -fsSL https://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz | tar xzvf - -C ncurses --strip=1 --show-stored-names
   pushd ncurses
-  ./configure --prefix=$HOME/local --with-shared --enable-pc-files --with-pkg-config-libdir=$HOME/local/lib/pkgconfig
+  ./configure --prefix="$HOME/.local" --with-shared --enable-pc-files --with-pkg-config-libdir="$HOME/.local/lib/pkgconfig"
   make && make install
   popd
 
   mkdir -p tmux
   curl -fsSL https://github.com/tmux/tmux/releases/download/3.0a/tmux-3.0a.tar.gz | tar zvxf - -C tmux --strip=1 --show-stored-names
   pushd tmux
-  ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include" CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" 
+  ./configure CFLAGS="-I$HOME/.local/include -I$HOME/.local/include/ncurses" LDFLAGS="-L$HOME/.local/lib -L$HOME/.local/include/ncurses -L$HOME/.local/include" CPPFLAGS="-I$HOME/.local/include -I$HOME/.local/include/ncurses" LDFLAGS="-static -L$HOME/.local/include -L$HOME/.local/include/ncurses -L$HOME/.local/lib" 
   make
-  cp tmux $HOME/local/bin
+  cp tmux "$HOME/.local/bin"
   popd
 
   cat << 'THIS_EOF'>> ~/.bashrc
-#MANPATH=$HOME/local/share/man man tmux
-export PATH=$HOME/local/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
-#export MANPATH=$HOME/local/share/man:$MANPATH
+#MANPATH=$HOME/.local/share/man man tmux
+export PATH=$HOME/.local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+#export MANPATH=$HOME/.local/share/man:$MANPATH
 THIS_EOF
 fi
 
